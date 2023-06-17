@@ -1,0 +1,91 @@
+- `map key action`
+- `mapKey ɸ a`
+	- translate all keys with a main part of ɸ and zero or more modifier keys
+		- source
+			- wiki/Use in another keyboard layout
+	- `1.80.1`
+		- before only in normal, LinkHints and visual
+		- now everywhere
+		- also adds a feature of per-mode mapping
+			- e.g. `mapKey <f:o> <f2>` will map `f` to `f2` only in Vomnibar
+			- `o` vomnibar
+			- `i` insert mode
+			- `l` LinkHints
+			- `f` FindMode
+			- `v` VisualMode
+			- `m` Marks
+	- `1.98.0`
+		- `mapKey <xxx:v> <v-yyy>` will trigger commands mapped to `<v-yyy>`
+- `runKey`
+	- e.g. `map b runKey keys="j"` will just go down...
+	- `1.93.0`
+		- `map b runKey keysj"` can be simplified to `run b j`
+	- advanced
+		- environments
+			- source
+				- wiki/Map a key to different commands on different websites
+			- since `1.88.0`
+			- `env <name> condition1="..." condition2="..."`
+				- host
+				- elements
+				- fullscreen
+			- `runKey` has two opts
+				- `expect` can be
+					- dict mapping names to keys
+					- array of
+						- env: ...
+						- keys: ...
+						- options?: ...
+					- string of `envName1: keySequence1; envName2: keySequence2`
+				- if an environment matches the current situation, use its `keys` and the count received by `runKeys` to trigger another `map` rule
+				- if no environments match, then trigger the `keys` and `options` parameters of `runKey` itself
+			- `keys` should be a valid `key sequence` like `f`, `gF`, `[[`, `<a-c>`, `<v-j:i>`, or it can be a list of key sequences
+				- if a `keys` is only a string and has no space chars, then will execute a new key sequence of `repeating count of "runKey" + keys`
+				- if there's spaces in a `keys` string, or `keys` is an array of string, then use repeating count of `runKey` to select an item of it
+					- if the absolute value of repeating count is too large,then show an error and stop
+					- if the repeating count is negative, then do finding backwards
+				- delimiter can also be `,`
+				- `keys` can also be a tree of sequences
+			- if `runKey` has no `options`, then all params whose names match `o.${string}` will be collected as its `options` parameter
+		- when a key sequence in `keys` in `runKeys`'s options has `( ) ? : + %`, it will be parsed as a command tree
+			- source
+				- wiki/Auto run a tree of commands
+			- three types of nodes
+				- key node
+					- single mapped command
+						- `count + mapped key sequence` or command name
+						- e.g. `3<c-f1>` will be 3 times control+f1
+						- when it means `<v-...>`, then `<v-` and `>` can be omitted
+					- if it includes `$c` or `%c`, then its count will be multiplied by the count prefix of `runKey`
+					- `1.93.0`
+						- may have a suffix `#key=url-encoded-val&key2=val2` as inline options
+				- list node
+					- may include any number of child nodes
+					- `+` is used to join children, and may be omitted if there's no ambiguity
+					- e.g.
+						- `3f1c` means run `<v-f1c` 3 times
+						- `3f%cf` means `3f` and `%cf`
+				- branching node
+					- means `if ... then ... else ...`
+					- its syntax is `<condition> ["?" <then-branch>] [":" <else-branch>]`
+					- either `?` or `:` can be omitted, so both `(a?) and `(b:2c` will work
+				- to specify priorities, use `(` and `)` to join some nodes into a list (node)
+			- execution order
+				- a key node runs a single command and returns "success" or "failure"
+				- a list runs its children one by one
+					- when a child node fails:
+						- if the key is a key node, the list itself fails immediately, ignoring following nodes
+						- otherwise, if the child is not the last one, then the list continue to run a next child
+					- it returns the result of its last child node, or "success" if it's empty
+				- a branching node
+					- runs its condition node first
+					- and thenchooses one between `then` and `else` branches according to whether the `condition` succeeds or not
+					- it returns the result of its selected branch
+			- override options
+				- `1.93.0`
+					- syntax of inline options
+						- option values are url-encoded by default, except those after a second `#` character
+- `<v-***` is special syntax introduced in `1.88.0`
+	- declares a fake composed key to use in `mapKey` and `runKey`
+	- source
+		- wiki/Map a key to different commands on different websites

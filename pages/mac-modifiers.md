@@ -1,0 +1,64 @@
+- three reasons to use alt+ over hyper:
+	- faster (karabiner < hammerspoon)
+	- simpler ([[KISS]])
+	- can be combined with other modifiers (cmd, shift, cmd+shift)
+- modifier layers
+	- constraints:
+		- [[vivaldi]] extensions
+	- modifier layer list
+	- C
+		- works for Vivaldi extensions
+	- C S
+		- works for Vivaldi extensions
+		- also: [[super-dark-mode]] sets its default keyboard shortcut as `<C-S-e>` #content
+			- but it looks like to change it in extension html, it redirects to `chrome://extensions/shortcuts` (where it's "Not set" by default), so that probably will be subject to these limitations
+	- A
+		- works for Vivaldi extensions
+			- using this; #update not using
+				- bound due to dvorak, qwerty and all-the-way-down
+					- `j k m , u i o l d`
+					- `t h m w g c r n e`
+				- free:
+					- `q e y`
+					- `a s f`
+					- `z x v b .`
+				- using
+					- `y` for Toucan toggle pause
+					- `a` for Speechify play/pause
+					- `s` for Speechify save to library
+	- A S
+		- works for Vivaldi extensions
+	- S
+		- doesn't work for Vivaldi extensions
+			- include C A M
+	- M
+		- works for Vivaldi extensions
+	- M S
+		- works for Vivaldi extensions
+	- C M
+		- works for Vivaldi extensions
+	- C M S
+		- looks like it works for Vivaldi extensions
+			- but shows different output (Command + Ctrl + Shift ...)
+				- and cannot change scope (In Vivaldi dropdown is grey)
+	- C A
+		- doesn't work for Vivaldi extensions
+			- says Invalid combination
+	- C A S
+		- doesn't work for Vivaldi extensions
+			- says Invalid combination
+	- A M
+		- looks like it works for Vivaldi extensions
+			- but shows different output (Command + Alt + E)
+				- and cannot change scope (In Vivaldi dropdown is grey)
+	- A M S
+		- looks like it works for Vivaldi extensions
+			- but shows different output (Command + Alt + E)
+				- and cannot change scope (In Vivaldi dropdown is grey)
+	- C A M
+		- doesn't work for Vivaldi extensions
+			- says Invalid combination
+	- C A M S
+		- doesn't work for Vivaldi extensions
+			- says Invalid combination
+	-

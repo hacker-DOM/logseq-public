@@ -1,0 +1,10 @@
+-
+- 1.4k, Rust, 22-11, cat for markdown
+	- https://github.com/lunaryorn/mdcat
+- works best with iTerm2 or Kitty
+- renders all basic CommonMark syntax
+	- no tables and footnotes
+	- highlights code with `syntect`
+	- shows links
+	- inline images
+	- jump marks for heading in iTerm2

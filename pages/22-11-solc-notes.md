@@ -1,0 +1,143 @@
+- https://docs.soliditylang.org/en/v0.8.17/
+- object-oriented, high-level lang for smart contracts
+- solc-bin contains several dirs
+	- each represents a single platform
+		- each contains a `list.json` file listing all binaries
+- version string
+	- release
+		- `0.4.8+commit.60cc1668.Emscripten.clang`
+	- prerelease
+		- `0.4.9-nightly.2017.1.17+commit.6ecb4aa3.Emscripten.clang`
+- `// SPDX-License-Identifier: MIT`
+- pragma local to a file
+	- if you import another file, `pragma` does **not** automatically apply to that
+	- pragma version just instructs compiler to check whether its version
+		- matches the one required by the pragma
+			- if it does not, an error is raised
+- `pragma abicoder v1` / `v2`
+	- up to 0.7.4 use `pragma experimental ABIEnconderV2`
+	- select between two implementations of abi encoder/decoder
+		- v2
+			- able to encode and decode arbitrarily nested arrays and structs
+			- more validation and safety checks
+		- v2 contracts can interact with v1 contracts
+			- v1 contracts can interact with v2 cs
+				- if it doesn't make calls that require decoding new types (see above)
+					- compiler can detect this (and raise issue)
+		- for inheritance
+			- _it seems_ the child's encoding is the one used for external interaction
+- importing other files
+	- import paths do not directly refer to files
+	- compiler maintains internal database VFS
+		- each source unit is assigned a unique *source unit name* which is an opaque and unstructured identifier
+		- The import path specified in an import statement is translated into a source unit name and used to find the corresponding source unit in this database.
+	- standard json allows to pass names and contents of all files
+		- => source unit names are arbitrary
+- path resolution
+	- when you use an _import statement_, you specify an _import path_ that references a _source unit name_
+	- command-line compiler provides the _host filesystem loader_
+		- a rudimentary callback that interprets a SUN as a path in the local filesystem
+- initial content of VFS
+	- CLI
+		- `solc contract.sol /usr/local/other-contract.sol`
+		- SUN of a file is constructed by converting its path to a canonical form
+			- and (if possible) make it relative to either the base path or one of the include paths
+	- Standard JSON
+		- has `language`, `sources`, `settings`
+		- `sources` dictionary becomes initial content of the VFS
+		- keys used as SUN
+	- Standard JSON (import callback)
+		- `{ "sources": { "token.sol": { "urls": [ "/p/token.sol", "https://www.github.com/token.sol"]}}}`
+		- if an import callback is available, compiler will give strings in `urls`
+			- until one is successfully loaded or the end is reached
+		- keys used as SUN
+	- Standard input
+		- SUN `<stdin>`
+- imports
+	- direct import
+		- full SUN specified directly (almost)
+		- after applying _import remappings_, the IP becomes the SUN
+		- WARN does not perform shell-like normalization
+			- e.g. `a//b` -> `a/b`
+			- => when Standard JSON is used
+				- possible to associate different content with SUNs that refer to same file on disk
+		- when the source is not available in the VFS, SUNs are passed to import callback
+			- HFL (host filesystem loader) will use it as a path and find the file
+				- now platform-specific normalization kicks in
+					- => same file may be loaded twice
+						- (but SUNs will be different)
+	- relative import
+		- path starting with `./` or `../`
+		- SUN computation:
+			- prefix
+				- SUN of importing file
+				- -> last path segment is removed
+				- -> leading part of _normalized import path_
+					- consists only of `/` and `.`
+					- for every `..` segment the last path segment is removed
+			- prefix is prepended to _normalized import path_
+			- normalization is not done on SUN of importing file
+				- so that `https://` does not turn into `https:/`
+		- use of relative imports with `../` is not recommended
+			- use direct imports and _base path_ (or) _include path_
+	- base paths and include paths
+		- represent directories that HFL will load from
+		- when a SUN is passed to HFL, it prepends the base path to it and performs an fs lookup
+			- if not successful
+				- same is done with all directories on the _include path_ list
+		- by default, base path is empty
+			- => SUN is unchanged
+			- => when SUN is relative path, file looked up from cwd
+			- only value that results in absolute paths in SUNs
+				- being interpreted as absolute paths
+		- include paths cannot have empty values
+			- must be used together with a _base path_
+		- include paths can overlap as long as it's not ambiguous
+- cli path normalization and stripping
+	- paths coming from command line -> canonical form
+	- before 0.8.8, cli path stripping was not applied
+		- only normalization was conversion of path separators
+		- recommended to invoke compiler from _base path_ and only use relative paths (in cli)
+- allowed paths
+	- HFL will only load files from:
+		- Standard JSON mode
+			- base path
+			- include paths
+		- Command-line
+			- base path
+			- include paths
+			- directories of input files listed on command line
+			- remapping targets
+	- can be extended with `--allow-paths`
+	- case-sensitive
+	- targets of symlinks in allowed paths not (automatically) allowed
+- import remapping
+	- to redirect imports to a different location in the VFS
+	- changes translation between _import paths_ and SUNs
+	- `context:prefix=target`
+		- `context`
+			- beginning of SUN of file containing the import
+			- must match exactly
+				- e.g. `a//b=c` will not match `a/b`
+		- `prefix`
+			- beginning of SUN resulting from import
+		- `target`
+			- value the prefix is replaced with
+	- remapping info is stored in contract metadata
+		- => any modifications to remappings will result in different bytecode
+		- => don't include any local information in remapping targets
+	- remappings only affect IP -> SUN translation
+		- SUNs added to VFS in any other way cannot be remapped
+			- e.g.
+				- paths specified on command line
+				- paths specified in `sources['urls']` in Standard JSON
+	- `context` and `prefix` must match SUNs, not IPs
+	- remappings work also on normalized results of relative paths!
+	- cannot remap base path, or any other part of the path that is added internally
+		- by an import callback
+	- target can be relative path 👀
+		- will be resolved relative to _base path_ (i think)
+	- at most one remapping is applied
+		- the one with longest matching prefix
+		- => remappings aren't recursive
+	- if target is empty, `prefix` is removed

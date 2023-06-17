@@ -1,0 +1,22 @@
+- erc20
+	- erc1363
+		- token interface for erc20
+		- supports executing recipient code after `transfer` or `transferFrom`
+			- or
+		- spender code after `approve`
+	- erc777
+- erc1155
+	- can contain both fungible tokens and NFTs
+- erc4626
+	- tokenized vault
+	- designed to unify the params of yield-bearing vaults
+- erc721
+	- NFT
+	- erc2309
+		- standardized event
+			- emitted when creating/transferring NFTS using consecutive token identifiers
+	- erc4400
+		- NFT consumer role
+	- erc4907
+	  id:: 63722c1b-112f-4827-8fe4-78943dcad6c5
+		- adds time-limited role with restricted permissions

@@ -1,0 +1,42 @@
+- Mac Os Key Repeat, 34st, Js, 22-05
+	- https://github.com/ZaymonFC/mac-os-key-repeat
+	  :LOGBOOK:
+	  CLOCK: [2022-10-30 Sun 19:20:40]--[2022-10-30 Sun 19:20:40] =>  00:00:00
+	  :END:
+- also: https://mac-key-repeat.zaymon.dev/
+- Mechanics
+	- System Preferences
+		- Key Repeat 1-8
+		- Delay Until Repeat 1-6
+	- https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
+		- InitialKeyRepeat [Initial delay]
+			- divide by 15
+			- can set to 10
+			- normal minimum is 15 (225 ms)
+		- KeyRepeat [Key repeat interval]
+			- divide by 15
+			- can set to 1
+			- normal minimum is 2 (30 ms)
+			- can't be set between 2 and 1
+		- examples
+			- answerer set
+				- initial to 150 ms
+				- repeat rate to 40 ms
+			- fastest settings:
+				- 15, 2 in UI
+			- fastest setting
+				- 10, 1
+			- used for last 2 months:
+				- 15, 6
+			- try 1:
+				- 1, 4
+					- terrible
+			- try 2:
+				- 8, 4
+					- better
+			- try 3:
+				- 10, 5
+		- also
+			- Gist, Increase key repeat rate on macOS, 79st, ~15 co, 2017
+				- [hofmannsven/README.md](https://gist.github.com/hofmannsven/ff21749b0e6afc50da458bebbd9989c5)
+			- [Increase key repeat rate on macOS](https://gist.github.com/hofmannsven/ff21749b0e6afc50da458bebbd9989c5)

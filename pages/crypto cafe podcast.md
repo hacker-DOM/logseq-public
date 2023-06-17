@@ -1,0 +1,37 @@
+- https://www.youtube.com/@CryptoCafePodcast
+- E0x00 [Dom, Tannr]
+	- dom
+		- woke dash
+		- update yellow paper?
+			- asciiidoc
+			- web-first
+			- eips
+		- learning
+			- fundamentals: calculus, prob, statitics
+			- applied: funan
+			- papers: ...
+		- teaching - 3 rareskills.io
+		- vim config
+	- tannr
+		- emacs fan
+		- static analysis & visualization
+		- symbolic evm
+		- [[athena]]
+			- ~coq, isabelle
+			- docs
+			- generic framework for symbolic execution
+			- => k framework
+				- vory generic
+					- like athena
+				- matching logic > rewriting logic
+			- lsp + code extension
+		- education program
+			- theory & application
+			- mastery-based approach
+				- => subscription model
+				- ~ $500/mon
+			- career support
+			- kicks off in september
+	- solvio
+		- dom's edtech startup '18-'19
+		-

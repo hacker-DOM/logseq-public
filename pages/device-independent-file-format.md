@@ -1,0 +1,7 @@
+- dvi
+- output file format of TeX
+- implemented by donald knuth in 1982
+- typically used as input to a second program ("dvi driver"), which translates dvi files to graphical data
+	- drivers also used to convert dvi to [[postscript]], pdf etc.
+- unlike [[postscript]] and pdf does not support font embedding
+	- the fonts it references must already be installed

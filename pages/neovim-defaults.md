@@ -1,0 +1,19 @@
+- https://neovim.io/doc/user/vim_diff.html#nvim-defaults
+- commands:
+	- :filetype on
+	- :syntax enable
+- options:
+	- on
+		- 'autoindent'
+		- 'autoread'
+	- other
+		- 'background' dark
+		- 'backspace' indent,eol,start
+		- 'backupdir' `~/.local/state/nvim/swap`
+		- 'belloff' always
+		- 'display' lastline
+		- 'encoding' UTF-8
+		- 'fillchars' `vert:|,fold:·,sep:|`
+		- 'formatoptions' `tcqj`
+			- `cqjrol`
+		-

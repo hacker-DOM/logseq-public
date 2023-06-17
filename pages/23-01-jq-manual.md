@@ -1,0 +1,20 @@
+- a jq program is a filter
+	- takes input
+		- whitespace-separated JSON values
+	- produces output
+		- whitespace-separated JSON values
+	- you can combine filters
+	- some filters produce multiple results
+	- run on as "stream" of JSON data
+- opts
+	- -n/--null-input
+		- don't read any (std) input
+			- use `null` as input
+		- useful for creating new json data
+	- --indent n
+		- use n spaces for indentation
+		- max 7
+	- -C vs -M
+		- force color / disable color
+		-
+		-

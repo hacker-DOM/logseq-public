@@ -1,0 +1,45 @@
+- categories
+	- serif
+	- sans-serif
+		- neo-grotesque
+			- straightforward, limited stroke width variation
+			- uniform width capitals
+			- e.g.
+				- Helvetica
+				- Arial
+				- Roboto
+		- geometric
+			- based on geometric shapes
+			- e.g.
+				- Futura
+		- humanist
+			- inspired by
+				- Roman square capitals
+				- traditional serif typefaces
+				- calligraphy
+			- often have true italics
+			- often have stroke modulation (strokes that vary in width along their line)
+			- e.g.
+				- Tahoma, Trebuchet, Verdana, Calibri
+					- Microsoft
+				- Lucida Grande, Fira Sans, Droid Sans
+- defaults
+	- Windows 10
+		- Consolas
+	- MacOS
+		- monospace
+			- SF Mono
+			- previously Menlo, Monaco
+			- dom:
+				- in browser is Courier :-(
+		- serif
+			- Times
+		- sans
+			- Helvetica
+		- system ui
+			- .SF NS
+	- Linux
+		- DejaVu Sans Mono
+	- Android
+		- Roboto Mono
+		-

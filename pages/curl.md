@@ -1,0 +1,29 @@
+- opts
+	- -d
+		- --data
+		- HTTP POST data
+	- -f
+		- --fail
+		- fail fast with no output on HTTP errors
+	- -i
+		- --include
+		- include protocol response headers in the output
+	- -o <file>
+		- --output
+		- write to <file> instead of stdout
+	- -O
+		- --remote-name
+		- write output to a file named as the remote file
+	- -T <file>
+		- --upload-file
+		- transfer local <file> to destination
+	- -u <user:password >
+		- --user
+		- server user and password
+	- -A <name>
+		- --user-agent
+		- send User-Agent <name> to server
+	- --header
+		- e.g. 'X-My-Header: 123'
+	- --request
+		- PUT...

@@ -1,0 +1,13 @@
+- plugins
+	- packer.nvim
+	- telescope.nvim
+	- Comment.nvim
+	- nvim-autopairs
+	- gitsigns.nvim
+	- nvim-cmp
+	- nvim-web-devicons
+	- nvim-colorizer.lua
+	- base46
+	- alpha-nvim
+	- indent-blankline.nvim
+	- nvim-tree.lua

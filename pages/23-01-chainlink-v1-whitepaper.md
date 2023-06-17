@@ -1,0 +1,21 @@
+- abstract
+	- present both
+		- on-chain contract data aggregation system
+		- (more efficient) off-chain consensus mechanism
+		- and supporting
+			- reputation and security monitoring services
+		- improvements
+			- rich oracle programming
+			- data-source infrastructure modifiactions
+			- confidential smart-contract execution
+- toc
+	- section
+		- 2 - cl architecture
+		- 3 - oracle security
+		- 4 - approach to decentralization and distribution of oracles and data sources
+		- 5 - four security services proposed + role played by LINK
+		- 6 - long-term dev strategy
+		- 7 - alternative oracle designs
+		- 8 - design principles & philosophy
+	-
+		-

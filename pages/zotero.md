@@ -1,0 +1,9 @@
+- New to zotero, any tips? 13up, 16co
+	- https://reddit.com/r/zotero/comments/vnm232/new_to_zotero_any_tips/
+	- make a backup of your bibliographical database
+	- download zotero connector
+	- keep biblio data (but not pdfs) synced with zotero online
+	- create saved search folders for different writing
+	- annotate pdfs in zotero & generate a report from zotero collection
+	- learn Csl basics
+-

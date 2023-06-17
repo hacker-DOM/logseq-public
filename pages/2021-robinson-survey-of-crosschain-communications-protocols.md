@@ -1,0 +1,43 @@
+- top-level usage scenarios
+	- value swapping
+	- crosschain messaging
+	- blockchain pinning
+- analysis
+	- how each protocol achieves crosschain consensus
+	- what trust assumptions are made
+	- protocol's ability to operate successfully in permissionless and permissioned contexts
+	- whether have safety, liveness, and atomicity
+	- whether they require changes to blockchain software to operate, or act as a blockchain application
+- two requirements common in distributed systems
+	- accessing data in other systems
+		- SPARQL
+		- REST
+	- accessing functionality in other systems
+		- RPC
+		- COBRA
+		- REST
+- properties of crosschain communication protocols
+	- Safety
+		- bad states are not reachable
+	- Atomicity
+		- when the protocol finishes, state updates on all blockchains (involved in the crosschain transaction) are either committed or rolled back
+	- Liveness
+		- generally
+			- good states are eventually reached
+		- specifically
+			- protocol eventually terminates
+- toc
+	- 1 introduction
+	- 2 scenarios
+	- 3 required attributes
+	- 4-6 main protocols
+	- 7 comparison
+	- 8 future research directions
+- high-level usage scenarios are based on three core capabilities
+- 4 Value Swaps Techniques
+	- A. Hashed Timelock Contracts
+		- allows crosschain atomic swaps
+		- onchain consensus used to ratify offchain agreement
+		- examples
+			- [[lightning-network]]
+			- [[dogecoin-to-ethereum-bridge]]

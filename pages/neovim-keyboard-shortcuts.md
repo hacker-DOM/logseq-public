@@ -1,0 +1,4 @@
+- `<A-q>` does work
+	- but it doesn't distinguish between `Alt+q` and `Alt+Shift+q`
+- Super/Meta is currently not supported
+	- 21-04-19 https://github.com/neovim/neovim/issues/14400

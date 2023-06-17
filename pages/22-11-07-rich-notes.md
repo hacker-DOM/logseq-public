@@ -1,0 +1,53 @@
+- https://rich.readthedocs.io/en/stable/
+- lib for writing _rich_ test to the terminal
+	- and for displaying advanced content such as tables, markdown, syntax highlighted code
+	- and as debugging aid by pretty printing and syntax highlighting structures
+- console api
+	- for complete control over terminal formattings
+		- rich offers a `Console` class
+	- most apps will require a single Console instance
+		- you may want to create one at the module level
+			- or
+		- as an attribute of a top-level object
+	- will auto-detect capabilities of terminal and convert colors if necessary
+		- size
+			- current dimensions of terminal
+				- (may change)
+		- encoding
+			- default encoding
+				- typically utf-8
+		- is_terminal
+		- color_system
+			- several standard for writing color to the terminal
+			- can also set manually
+			- None
+				- disables color
+			- auto
+				- auto-detect color system
+			- standard
+				- 8 colors in normal & bright
+					- 16 colors
+			- 256
+				- 16 "standard" colors + fixed palette of 240 colors
+			- truecolor
+				- 16.7M colors
+			- windows
+				- 8 colors in legacy terminal
+				- truecolor in new terminal
+		- console.print
+		- console.log(log_locals=False)
+			- also adds time and file & linenumber
+		- console.print_json
+		- console.out
+			- a tad more low-level
+			- won't pretty print, apply word wrap or markup
+			- will only do basic syntax highlighting
+		- console.rule(style='',align=left|center|right)
+			- horizontal rule with an optional title
+- ...
+- style themes
+- ...
+- can convert string to styled text by calling `from_markup`s
+-
+-
+- pretty printing

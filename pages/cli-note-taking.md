@@ -1,0 +1,17 @@
+- zk
+	- https://www.github.com/mickael-menu/zk
+	- getting-started.md
+		- zk init
+			- creates .zk
+				- templates/
+				- config.toml
+				- notebook.db
+		- zk new --title 'an int concept'
+			- opens vim with md with title ^ and random name (cklb.md)
+		- interactive mode
+			- doesn't work
+		- list, tags
+		- sort, format...
+- telekasten
+	- pretty basic
+-

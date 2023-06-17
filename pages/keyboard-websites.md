@@ -1,0 +1,5 @@
+- 735, Html, 21-07, ShortcutMapper
+	- https://github.com/waldobronchart/ShortcutMapper
+- shortcutfoo.com
+- keycombiner.com
+- usethekeyboard.com

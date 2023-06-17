@@ -1,0 +1,120 @@
+- Using Lua from Vimscript
+	- require
+		- lua builtin
+	- luafile, source, runtim
+		- Ex commands
+		- do not support modules
+		- executed regardless of whether it has been executed before
+		- :luafile and :source take a path that is either absolute or relative to the working directory
+		- :runtime uses the 'runtimepath' option to find files
+	- luaeval
+		- optional second argument that allows you to pass data to the expression
+	- v:lua
+		- global Vim variable that allows you to call Lua functions in the global namespace `_G` directly from vimscript
+- Vim namespace
+	- vim.inspect
+		- put (0.7.0+)
+		- :lua =vim.loop
+	- vim.fn
+	- vim.api.nvim_eval
+		- equivalent of `luaeval`
+			- but doesn't allow passing `_A` variable to pass data to the expression
+	- vim.api.nvim_exec
+		- executes a chunk of vimscript code
+			- takes a string containing the source code to execute and a boolean to determine whether the output should be returned by the function
+	- vim.api.nvim_command
+		- i guess like `nvim_eval`?
+	- vim.api.nvim_set_keymap
+		- have to escape special chars
+	- vim.cmd
+		- = vim.api.nvim_exec, but output is always set to `false`
+		- i guess will be the most common
+		- double brackets => don't have to escape strings
+	- vim.keymap.set
+		- don't have to escape special chars
+		- i guess the direct "attributes" are designed to be more accessible & useful
+	- `vim.api.nvim_(buf|win)?(set|get)option`
+		- boolean options like `(no)number` must be set to `true` or `false`
+	- buffer- and window-local opts need a buffer no. or window no. (0 will set/get opt for current buf/win)
+	- meta-accessors
+		- vim.o
+			- like `:let &{option-name}`
+			- e.g.
+				- `vim.o.smarttab = false`
+				- `vim.o.isfname = vim.o.isname .. ',@-@'`
+		- vim.go
+			- like `:let &g:{option-name}`
+		- vim.bo
+			- like `:let &l:{option-name}` for buffer-local opts
+		- vim.op
+			- like `:let &l:{optional-name}` for window-local opts
+		- also variants:
+			- `vim.opt = :set`
+			- `vim.opt_global = :setglobal`
+			- `vim.opt_local = :setlocal`
+			- e.g.
+				- `vim.opt.smarttab = false`
+				- `print(vim.opt.smarttab:get())`
+			- `:append()`, `:remove()`
+	- `vim.api.nvim_(set|get|del)_var()`
+		- variables can be deleted (equiv. of `:unlet`)
+		- local vars, script vars and func args (`l:`, `s:`, `a:`) cannot be manipulated
+	- `vim.g` = global variables
+	- `(vim.)b` = buffer variables
+	- w = window vars
+	- t = tabpage
+	- v = predefined vim
+	- env = environment vars
+	- `vim.g['my#variable]` for vars that cannot be identifiers (in Lua)
+	- delete variable by assigning nil to it	- cannot add/update/delete keys from a dictionary
+	- ...
+	- autoload functions have to be called with `vim.fn['my#autoload#function]`
+	- functionality of `vim.fn` = `vim.call`, but allows a more Lua-like syntax
+	- `vim.api.nvim_call_function` - returns table for floating points & doesn't accept Lua closures
+	- `vim.api.nvim_set_keymap()`
+		- first arg
+			- {empty-string} = normal, visual, select, operator-pending
+			- n = normal,
+			- v = visual and select
+			- s = select
+			- x = visual
+			- o = operator-pending
+			- ! = insert and command-line
+			- i = insert
+			- l = insert, command-line, lang-arg
+			- c = command-line
+			- t = terminal
+		- second arg
+			- trigger
+		- third arg
+			- command
+		- fourth arg
+			- table containing boolean options (`:h map-arguments`)
+			- since 0.7.0 can also pass `callback` option
+	- `vim.keymap.(set|del)`
+		- 0.7.0+
+		- first arg string (mode) or table of strings
+		- second arg trigger
+		- third arg string (vimscript command) or lua function()
+		- fourth arg options
+			- add `desc` key to describe `Lua function`!
+		- mapping are `noremap` by default
+			- except when rhs is `<Plug>` mapping
+			- (set `remap = true`)
+		- if `expr = true`, `nvim_replace_termcodes()` is automatically applied to strings returned from Lua functions
+	- `vim.api.nvim_(create|del)_user_command`
+		- first arg name of command
+		- second arg code to execute
+			- string
+			- Lua function
+		- command attributes
+			- _except_ `-buffer`
+		- additional attributes
+			- `desc`
+			- `force`
+				- `true` by default
+- General Tips and Recommendations
+	- Reloading cached modules
+		- `plenary.nvim` has a function for this!
+	- Don't pad Lua strings!
+	- Vim booleans

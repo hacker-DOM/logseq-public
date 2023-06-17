@@ -1,0 +1,15 @@
+- `-v` and `-h`
+- ideas
+	- `if sys.version_info >= (3, 8):`
+		- `from typing import Literal`
+	- `else:`
+		- `from typing_extensions import Literal`
+- emojis
+	- compile ⚰️
+	- config ⚙️
+	- detect 🔎
+	- lsp 🗼
+	- svm 🗂️
+	- printers 🖨️
+	- test 🧪 ❓ ✅
+	- fuzz 🎲

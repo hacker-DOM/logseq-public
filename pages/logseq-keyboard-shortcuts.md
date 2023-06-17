@@ -1,0 +1,22 @@
+- basic
+	- list
+		- Click to edit any block.
+		- Type Enter to start a new block.
+		- Type Shift+Enter to create a new line in the current block.
+		- Type / to show all the commands.
+			- for example type /Draw for free drawing.
+		- Type [[ to reference or create a new page.
+		- Type (( to reference a block on any page.
+		- Type Tab to indent and Shift+Tab to unindent a block.
+		- Type < for more formatting commands (like quotes and tips!)
+	- source
+		- https://chrislasar.github.io/logseq-doc/docs/reference/shortcuts/
+- advanced
+	- list
+		- cmd+o
+			- follow link
+- list of settings
+	- from https://discuss.logseq.com/t/official-comprehensive-list-of-config-edn-options/4935/9?u=hacker-dom
+		- https://github.com/logseq/logseq/blob/a939767aaf5720ec68c1ca00cc589dd85718995f/templates/config.edn
+			- says keyboard shortcuts are at https://github.com/logseq/logseq/blob/a939767aaf5720ec68c1ca00cc589dd85718995f/src/main/frontend/modules/shortcut/config.cljs
+- [[logseq-plugin-vim-shortcuts]]

@@ -1,0 +1,5 @@
+- not using because:
+	- doesn't have tree tabs
+	- doesn't have Chrome's Print Preview
+	- smooth scrolling not working on MacOS:
+		- https://github.com/qutebrowser/qutebrowser/issues/6840

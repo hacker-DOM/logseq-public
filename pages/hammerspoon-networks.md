@@ -1,0 +1,24 @@
+- network
+- network.configuration
+- network.host
+- network.reachability
+- network.ping
+- network.ping.echoRequest
+- messages
+- webview
+- webview.datastore
+	- list and purge things like
+		- cookies
+		- disk caches
+		- memory caches
+		- WebSQL
+		- IndexedDB
+		- local storage
+- webview.toolbar
+- webview.usercontent
+	- injecting custom JS
+- websocket
+- httpserver
+	- create server
+- httpserver.hsminweb
+	- for use within Hammerspoon

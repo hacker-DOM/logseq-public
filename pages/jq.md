@@ -1,0 +1,10 @@
+- [[23-01-jq-manual]]
+- indexing
+	- `jq -n --arg base 'baz.lua' '.lines[$base]["programmingCode"] += 1'`
+		- works
+	- `jq -n --arg base 'baz.lua' '.lines[$base].programmingCode += 1'`
+		- works
+	- `jq -n --arg base 'baz.lua' '.lines[$base]."programmingCode" += 1'`
+		- works
+	- `jq -n --arg base 'baz.lua' '.lines[$base].["programmingCode"] += 1'`
+		- doesn't work

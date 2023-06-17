@@ -1,0 +1,145 @@
+- ch 1
+	- no
+		- inheritance
+		- generics
+		- aspect-oriented progr
+		- function overloading
+		- operator overloading
+		- pattern matching
+		- named parameters
+		- exceptions
+	- go workspace
+		- since 2009, there have been several changes in how go projects are organized
+			- => most of the advice is now obsolete
+		- go expects single workspace
+			- for 3rd party go tools
+				- installed via `go install`
+			- by default `$HOME/go`
+				- can change with `$GOPATH`
+	- `go env` lists all env vars recognized by go
+		- some guides tell you to set `GOROOT` env var
+			- this is no longer necessarry
+- ch 2: primitive types and declarations
+	- builtin types
+	- the zero value
+		- go assigns _zero value_ to any variable that is declared but not assigned a value
+	- literals
+		- writing out a number, character, or string_
+		- integer literals
+			- bases
+				- default base 10
+				- 0b prefix for binary
+				- 0o prefix for octal
+					- also: leading 0 with no letter
+						- don't use, it's confusing
+				- 0x prefix for hexadecimal
+			- you can put underscores in the middle of your literals
+				- can't be at beginning of number
+				- can't have two next to each other
+			- you can
+				- use an integer literal in a floating-point expression
+					- or
+				- assign an integer literal to a floating-point number
+				- => literals in Go are untyped, can interact with any variable that is compatible with the literal
+					- can also use literals with user-defined types based on primitive types (see ch 7)
+					- but cannot assign float literal to int (compile error)
+					- also compile error to assign a value that overflows the type of the variable
+						- eg assigning 1000 to `byte`
+					- when type isn't declared, Go will use _default type_ for a literal
+		- floating poin literals
+			- decimal point
+				- or
+			- 6.03e23 (or negative exponent)
+			- 0x; p for exponent
+		- rune literals
+			- characters
+			- single-quotes
+			- formats
+				- `'a'`
+				- 8-bit octal `'\141'`
+				- 8-bit hexadecimal `'\x61'`
+				- 16-bit hexadecimal `'\u0061'`
+				- 32-bit Unicode `'\U00000061'`
+				- also: `'\n'`, `'\t'`, `'\''`, `'\"'`, `'\\'`
+		- string literals
+			- interpreted string literal double quotes
+				- eg `"Greetings and \n\"Salutations\""`
+			- raw string literal backquotes
+				- eg
+				- ```
+				  `Greetings and
+				  "Salutations"`
+				  ```
+	- booleans
+		- zero value is `false`
+	- numeric types
+		- int8, int16, int32, int64
+		- uint8, uint16, uint32, uint64
+		- zero value is 0
+		- special types
+			- byte
+				- = uint8
+			- int
+				- int32 or int64
+				- compile error to assign, compare or operate between `int` and `int32`
+					- requires explicit type conversion
+				- integer literals
+					- default to `int`
+				- same for `uint`
+			- rune
+				- alias for int32
+			- uintptr
+		- which one should i use
+			- if your data uses a specific type, use that
+			- if you're writing a library, use `int64` and `uint64`
+			- otherwise, use `int`
+		- integer operators
+			- division on integers yields integers
+				- truncation towards zero
+			- division by 0 yields panic
+			- `+=`, `-=`, `*=`, `/=`, `%=`
+			- `==`, `!=`, `>`, `>=`, `<`, `<=`
+			- `<<`, `>>`, `&`, `|`, `^`, `&^`
+				- also for `=`
+		- floating point types
+			- float32, float64
+			- zero value is 0.0
+			- ieee 754
+				- => large range, limited precision
+					- float32 only has 6 or 7 decimal-digits precision
+			- which to use?
+				- unless you have to be compatible with an existing format, use float64
+			- default type is float64
+			- can use all arithmetic operator except `%`
+			- dividing a non-zero floating point variable by 0 returns `+Inf` or `-Inf`
+			- dividing 0.0 by 0 returns `NaN`
+		- complex types
+			- skipping
+	- a taste of strings and runes
+		- zero value ""
+		- `==`, `!=`, `>`, `>=`, `<`, `<=`
+		- `+`
+	- explicit type conversion vs automatic type promotion
+		- also: no type can be automatically converted to `bool`
+	- var versus :=
+		- `var x int = 10`
+			- default type of 10 is `int`
+				- => `var x = 10`
+			- or if you want to assign default value
+				- => `var x int`
+		- `var x, y int = 10, 20`
+		- `var x, y int`
+			- all zero values of the same type
+		- `var x, y = 10, "hello"`
+			- or of different types
+		- ```
+		  var (
+		  	x int
+		      y     = 20
+		      z int = 30
+		      d, e  = 40, "hello"
+		      f, g string
+		  )
+		  ```
+			- declaration list
+		-

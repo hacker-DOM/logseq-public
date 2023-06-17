@@ -1,0 +1,32 @@
+- no modifiers
+	- pass-thru
+- S
+	- capitals/shifted punctuation
+- C
+	- vim
+		- lots
+- CS
+	- vim
+		- i dont think its possible to distinguish
+- A
+	- [[domos-vim-everywhere]] (motions)
+- AS
+	- vim-everywhere (selection + motion)
+- M
+	- builtin things (cmd+a,z,x,c,v,n)
+	- common shortcuts:
+		- cmd+s - save
+		- cmd+f - search
+		- cmd+g - next search match
+	- unused
+		- cmd+b,
+		- cmd+punctuation (some)
+- SM
+- CA
+- CAS
+- AM
+- ASM
+- CM
+- CSM
+- CAM
+- CASM
