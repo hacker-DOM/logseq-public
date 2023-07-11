@@ -1,5 +1,0 @@
-- 131, Js, 2020, ObsidianBookmark, Chrome extension and nodejs server to allow web clipping to Obsidian
-	- https://github.com/Liamballin/ObsidianBookmark
-- 30st, 15c, 22-08
-	- [Has anyone created a bookmarking system in obsidian ???](https://old.reddit.com/r/ObsidianMD/comments/we4b06/has_anyone_created_a_bookmarking_system_in/)
--

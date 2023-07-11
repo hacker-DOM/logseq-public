@@ -1,8 +1,0 @@
-- python
-	- https://github.com/srsudar/eg/tree/master/eg
-- typescript
-	- https://github.com/carloscuesta/gitmoji-cli/
-- golang
-	- gdu?
-- rust
-	- bottom?

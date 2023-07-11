@@ -1,6 +1,0 @@
-- pronounced "archive"
-- repo of electronic preprints and postprints (known as e-prints)
-- posted after moderation (approval), but not peer review
-- almost all scientific papers are self-archived on arXiv before publication (in a journal)
-- started at Los Alamos National Laboratory
--

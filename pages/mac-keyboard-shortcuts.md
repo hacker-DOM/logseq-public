@@ -1,3 +1,0 @@
-- M S
-	- G
-		- enter path in file picker

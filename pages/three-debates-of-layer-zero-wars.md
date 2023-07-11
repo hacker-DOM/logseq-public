@@ -1,5 +1,0 @@
-- I discuss
-	- foundational debate between universal v local securitty
-	- how founders can use crosschain infrastructure to build new native token yield
-	- cost tradeoffs
-	-

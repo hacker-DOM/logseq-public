@@ -1,8 +1,0 @@
-- glow seems to be a bit more spaced out
-- mdcat has text for image
-	- glow has nothing
-- mdcat
-	- clicking on links doesn't currently work in Kitty
-- glow has a full TUI
-	- but doesn't have search?!
-		- https://github.com/charmbracelet/glow/issues/183

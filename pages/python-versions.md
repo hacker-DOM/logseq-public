@@ -1,4 +1,0 @@
-- 3.6.3
-	- support for methods on `NamedTuple`s
-- 3.11
-	- https://learnbyexample.github.io/python-regex-possessive-quantifier/

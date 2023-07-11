@@ -1,7 +1,0 @@
-- crosschain space has no clear winner yet
-- we expect see further iterations after [[ibc]]/[[layer-zero]]
-- Section 1: State of Cross-Chain Communication
-	- there will be more and more chains
-		- protocols will issue more l1 tokens: [[on-value-capture-at-layers-1-and-2]]
-	- crosschain interoperability is important
-		- increases asset value
